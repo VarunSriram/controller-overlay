@@ -17,9 +17,9 @@ This application solves that by bypassing the browser sandbox, using native bind
 
 ## How It Works
 
-1. **`main.js` (The Backend)**: Instead of relying on the browser engine, the main process uses **Koffi** to dynamically load the native Windows `xinput1_4.dll`. It polls the hardware data, completely bypassing Chromium's security sandbox.
-2. **`preload.js` (The Bridge)**: Exposes an API to the frontend so it can receive data streams without granting the DOM access to the underlying operating system.
-3. **`renderer.js` & `styles.css` (The Frontend)**: Receives the sanitized input payload via Inter-Process Communication (IPC) and dynamically updates the UI. Features analog trigger gradient fills and dynamic thumbstick tilt shadows based on raw vector magnitudes.
+1. **`main.js` Instead of relying on the browser engine, the main process uses **Koffi** to dynamically load the native Windows `xinput1_4.dll`. It polls the hardware data, completely bypassing Chromium's security sandbox.
+2. **`preload.js` Exposes an API to the frontend so it can receive data streams without granting the DOM access to the underlying operating system.
+3. **`renderer.js` & `styles.css` Receives the sanitized input payload via Inter-Process Communication (IPC) and dynamically updates the UI. Features analog trigger gradient fills and dynamic thumbstick tilt shadows based on raw vector magnitudes.
 
 ## Installation
 
