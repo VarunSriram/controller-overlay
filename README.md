@@ -4,18 +4,16 @@ A lightweight, standalone desktop application that displays a real-time, transpa
 
 ## Why This Exists
 I wanted a simple desktop application to display a controller overlay when conducting demo presentations for a game project. 
-
 I was surprised to discover the only options available were web based that required running tools like OBS in tandem. 
-
 While developing this I discovered standard web-based Gamepad APIs (`navigator.getGamepads()`) are hardcoded in Chromium to freeze inputs the moment a window loses focus. This makes standard web-based controller overlays useless when you click into a fullscreen game like a Unity build. 
 
-This application solves that by dropping down to the OS level, reading the raw Windows kernel inputs, and streaming them securely to the frontend.
+This application solves that by bypassing the browser sandbox, using native bindings to query the Windows XInput API directly, and streaming the data to the frontend.
 
 ## Tech Stack
 * **[Electron](https://www.electronjs.org/)** - Desktop application framework.
 * **[Node.js](https://nodejs.org/)** - Backend JavaScript runtime.
 * **[Koffi](https://koffi.dev/)** - A fast, pre-compiled Foreign Function Interface (FFI) for Node.js.
-* **HTML/CSS/JS** - Pure vanilla frontend with no heavy frameworks.
+* **HTML/CSS/JS** - Vanilla frontend with no heavy frameworks.
 
 ## How It Works
 
