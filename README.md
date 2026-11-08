@@ -21,7 +21,7 @@ This application solves that by bypassing the browser sandbox, using native bind
 2. **`preload.js` (The Bridge)**: Exposes an API to the frontend so it can receive data streams without granting the DOM access to the underlying operating system.
 3. **`renderer.js` & `styles.css` (The Frontend)**: Receives the sanitized input payload via Inter-Process Communication (IPC) and dynamically updates the UI. Features analog trigger gradient fills and dynamic thumbstick tilt shadows based on raw vector magnitudes.
 
-## 🚀 Installation
+## Installation
 
 **Prerequisites:** 
 * Windows 10/11 (Requires `xinput1_4.dll`)
