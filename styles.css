@@ -1,0 +1,254 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center center;
+}
+
+.controller {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 150px;
+  border: 2px solid #444444;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  -webkit-app-region: drag;
+  margin-top: 60px;
+}
+
+.scale-controls {
+  margin-top: 20px;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 2px solid #444444;
+  -webkit-app-region: no-drag;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #aaaaaa;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.scale-btn {
+  background: #444444;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.1s, transform 0.1s;
+}
+.scale-btn:hover {
+  background: #666666;
+}
+.button.active,
+.shoulder.active,
+.dpad-dir.active {
+  background: #00ff00;
+  color: #000;
+  transform: scale(0.9);
+}
+.button,
+.shoulder,
+.dpad-dir {
+  position: absolute;
+  background: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaaaaa;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.button,
+.dpad-dir,
+.shoulder {
+  transition: background 0.1s, transform 0.1s;
+}
+.button.active,
+.dpad-dir.active {
+  background: #00ff00;
+  color: #000000;
+  transform: scale(0.9);
+}
+
+.button {
+  border-radius: 50%;
+  border: 2px solid #555555;
+  width: 40px;
+  height: 40px;
+}
+#btn-3 {
+  top: 60px;
+  right: 90px;
+}
+#btn-1 {
+  top: 100px;
+  right: 50px;
+}
+#btn-2 {
+  top: 100px;
+  right: 130px;
+}
+#btn-0 {
+  top: 140px;
+  right: 90px;
+}
+
+.center-btn {
+  border-radius: 50%;
+  border: 2px solid #555555;
+}
+#btn-16 {
+  top: 70px;
+  left: calc(50% - 22px);
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+}
+#btn-8 {
+  top: 110px;
+  left: calc(50% - 45px);
+  width: 30px;
+  height: 30px;
+  font-size: 9px;
+}
+#btn-9 {
+  top: 110px;
+  left: calc(50% + 15px);
+  width: 30px;
+  height: 30px;
+  font-size: 9px;
+}
+
+#dpad {
+  position: absolute;
+  top: 160px;
+  left: 130px;
+  width: 90px;
+  height: 90px;
+}
+.dpad-dir {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+}
+#btn-12 {
+  top: 0;
+  left: 30px;
+}
+#btn-13 {
+  bottom: 0;
+  left: 30px;
+}
+#btn-14 {
+  top: 30px;
+  left: 0;
+}
+#btn-15 {
+  top: 30px;
+  right: 0;
+}
+
+.stick-area {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #222222;
+  border-radius: 50%;
+}
+#stick-left-area {
+  top: 60px;
+  left: 70px;
+}
+#stick-right-area {
+  top: 160px;
+  right: 130px;
+}
+
+.stick {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 40px;
+  height: 40px;
+  background: #333333;
+  border: 2px solid #555555;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px #000000;
+}
+.stick.active {
+  background: #00ff00;
+}
+
+.shoulder {
+  top: -20px;
+  width: 100px;
+  height: 35px;
+  border-radius: 15px;
+}
+#btn-4 {
+  left: 80px;
+}
+#btn-5 {
+  right: 80px;
+}
+#btn-6 {
+  left: 80px;
+  top: -60px;
+  height: 30px;
+  transition: none;
+}
+#btn-7 {
+  right: 80px;
+  top: -60px;
+  height: 30px;
+  transition: none;
+}
+
+#status {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  text-align: center;
+  color: #aaaaaa;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.divider {
+  width: 2px;
+  height: 25px;
+  background: #555;
+  margin: 0 5px;
+}
+
+.close-btn {
+  background: #900000;
+  color: #ffffff;
+}
+
+.close-btn:hover {
+  background: #c00000;
+}
