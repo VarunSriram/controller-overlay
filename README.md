@@ -52,5 +52,5 @@ npm run build
 ```
 The compiled executable will be located in the `dist/win-unpacked/` folder.
 
-## 🖥️ Platform Support
+## Platform Support
 Currently, this application is **Windows-only**. It explicitly targets the native Windows XInput DLL to achieve zero-friction background polling. From my research porting to macOS or Linux would require writing an OS-platform router in `main.js` to read from `/dev/input` (Linux) or spawn a Sidecar Swift process (Mac). This may come in a future updates with further instructions. 
