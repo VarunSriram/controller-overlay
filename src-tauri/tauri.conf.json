@@ -1,0 +1,24 @@
+{
+  "productName": "controller-overlay",
+  "version": "0.1.0",
+  "identifier": "com.controller.overlay",
+  "build": {
+    "frontendDist": "../frontend",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "Controller Overlay",
+        "width": 800,
+        "height": 600,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "shadow": false
+      }
+    ]
+  }
+}
