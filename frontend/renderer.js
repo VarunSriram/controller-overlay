@@ -1,4 +1,3 @@
-// Utility to toggle the .active class from your CSS
 function toggleActive(id, condition) {
     const el = document.getElementById(id);
     if (el) {
@@ -7,39 +6,29 @@ function toggleActive(id, condition) {
     }
 }
 
-// Utility to move the sticks inside their dark gray areas AND apply the subtle highlight
 function moveStick(stickId, axisX, axisY) {
     const el = document.getElementById(stickId);
-    const areaEl = document.getElementById(stickId + '-area'); // Grabs the outer boundary circle
-    if (!el) return;
-    
-    // Normalize -32768 to 32767 into -1.0 to 1.0 (with a 5000 deadzone to stop drift)
+    const areaEl = document.getElementById(stickId + '-area'); 
+    if (!el) return;    
     const deadzone = 5000;
     const percentX = Math.abs(axisX) < deadzone ? 0 : axisX / 32768; 
     let percentY = Math.abs(axisY) < deadzone ? 0 : axisY / 32768;
-    percentY = percentY * -1; // Invert Y for screen coordinates
+    percentY = percentY * -1; 
     
-    // The stick area is 80px, stick is 40px. Max travel from center is ~20px.
     const travelLimit = 20; 
     
-    // 1. Move the stick and shade its inner edge
     el.style.transform = `translate(${percentX * travelLimit}px, ${percentY * travelLimit}px)`;
     el.style.boxShadow = `inset ${percentX * 6}px ${percentY * 6}px 8px rgba(255, 255, 255, 0.6)`;
 
-    // 2. Apply the outer directional glow to the boundary area
     if (areaEl) {
-        // Calculate how far the stick is pushed (0.0 to 1.0) to control the glow opacity
         const intensity = Math.min(1, Math.sqrt(percentX * percentX + percentY * percentY));
-        
-        // Push a green shadow outward in the direction of the tilt
         areaEl.style.boxShadow = `${percentX * 5}px ${percentY * 5}px 8px rgba(0, 255, 0, ${intensity * 0.6})`;    }
 }
 
-// Rust injects data directly into this function at 60Hz
 window.updateControllerData = function(data) {
     const status = document.getElementById('status');
     if (status && status.innerText !== "") {
-        status.innerText = ""; // Hide the "Press any button" text on first input
+        status.innerText = "";
     }
 
     // Face Buttons
@@ -68,7 +57,6 @@ window.updateControllerData = function(data) {
     const rtEl = document.getElementById('btn-7');
     if (rtEl) rtEl.style.setProperty('--trigger-depth', `${rtPercent}%`);
 
-    // Center Buttons (Note: XInput natively blocks the Xbox Guide button from being read)
     toggleActive('btn-8', (data.wButtons & 0x0020) !== 0); // View/Back
     toggleActive('btn-9', (data.wButtons & 0x0010) !== 0); // Menu/Start
 
@@ -81,7 +69,6 @@ window.updateControllerData = function(data) {
     moveStick('stick-right', data.sThumbRX, data.sThumbRY);
 };
 
-// --- Custom UI Controls (Scale & Close) ---
 let currentScale = 1.0;
 const wrapper = document.getElementById('app-wrapper');
 const scaleText = document.getElementById('scale-text');
