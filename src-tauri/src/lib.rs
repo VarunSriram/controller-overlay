@@ -20,12 +20,9 @@ pub fn run() {
         .setup(|app| {
             let app_handle = app.handle().clone();
             
-            // 1. The Cancellation Token
             let is_running = Arc::new(AtomicBool::new(true));
             let is_running_clone = is_running.clone();
             
-            // 2. Intercept window destruction and flip the flag
-            // When JS calls app.exit(0), Tauri destroys this window, triggering this event
             if let Some(window) = app_handle.get_webview_window("main") {
                 window.on_window_event(move |event| {
                     if let tauri::WindowEvent::Destroyed = event {
@@ -34,9 +31,7 @@ pub fn run() {
                 });
             }
             
-            // 3. The Controller Thread
             std::thread::spawn(move || {
-                // Loop breaks cleanly when the flag is flipped
                 while is_running.load(Ordering::Relaxed) {
                     let mut state = XINPUT_STATE::default();
                     
