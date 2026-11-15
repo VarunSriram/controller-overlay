@@ -9,9 +9,7 @@ I wanted a simple desktop application to display a controller overlay when condu
 
 While developing this, I discovered standard web-based Gamepad APIs (`navigator.getGamepads()`) are hardcoded across modern browser engines and WebViews to freeze inputs the moment a window loses focus. This makes standard web-based controller overlays useless when you click into a fullscreen game like a Unity build. 
 
-This application solves that by completely bypassing the webview's hardware APIs. It uses a natively compiled Rust backend to query the Windows XInput API directly in the background, streaming the raw data to a lightweight frontend at 60Hz.
-
-This application solves that by completely bypassing the browser's hardware APIs. It uses a natively compiled Rust backend to query the Windows XInput API directly in the background, streaming the raw data to a lightweight frontend at 60Hz.
+This application solves that by completely bypassing the browser's hardware APIs. It uses a natively compiled Rust backend to query the Windows XInput API directly in the background, streaming the raw data to a frontend.
 
 ## Tech Stack
 - **[Tauri v2](https://tauri.app/)**: Ultra-lightweight desktop application framework.
@@ -57,6 +55,6 @@ Once finished, your deliverables will be located in:
 * **Windows Setup Installer:** `src-tauri/target/release/bundle/nsis/`
 
 ## Platform Support
-Currently, this application is **Windows-only**. It explicitly targets the native Windows XInput DLL to achieve zero-friction background polling without fighting OS compositors or security prompts. 
+Currently, this application is **Windows-only**. It explicitly targets the native Windows XInput DLL to achieve zero-friction background polling without fighting OS. I'm looking into something more up to date for reading input outside Xinput for a future release to hopefully expand what controllers work. 
 
 Future updates for macOS or Linux support would involve swapping the XInput backend for a cross-platform Rust library (like `gilrs`), though macOS users may require explicit "Input Monitoring" security permissions to allow background hardware polling.
