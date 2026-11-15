@@ -1,6 +1,6 @@
 {
   "productName": "Controller Overlay",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "identifier": "com.varun.controller-overlay",
   "build": {
     "beforeDevCommand": "",
