@@ -1,6 +1,6 @@
 # Tauri Xbox Controller Overlay
 
-[Download the Latest Version (Windows .exe)](https://github.com/VarunSriram/controller-overlay/releases/latest/download/controller-overlay.exe)
+[Download the Latest Version (Windows .exe)](https://github.com/VarunSriram/controller-overlay/releases)
 
 Standalone desktop application that displays a real-time, transparent Xbox controller overlay on top of your games. Designed specifically for game developers and streamers, this tool tracks controller inputs globally in the background without stealing window focus.
 
