@@ -4,6 +4,7 @@ use tauri::Manager;
 use windows::Win32::UI::Input::XboxController::{XInputGetState, XINPUT_STATE};
 
 #[derive(serde::Serialize)]
+#[allow(non_snake_case)]
 struct GamepadState {
     wButtons: u16,
     bLeftTrigger: u8,
@@ -24,6 +25,9 @@ pub fn run() {
             let is_running_clone = is_running.clone();
             
             if let Some(window) = app_handle.get_webview_window("main") {
+                // Force Windows to push the overlay to the top of the Z-order at runtime
+                let _ = window.set_always_on_top(true);
+
                 window.on_window_event(move |event| {
                     if let tauri::WindowEvent::Destroyed = event {
                         is_running_clone.store(false, Ordering::Relaxed);
